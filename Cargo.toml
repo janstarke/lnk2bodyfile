@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-lnk_parser = { path = "../lnk_parser" }
+lnk_parser = { path = "../lnk_parser" } # requires feature/getters to be merged
 anyhow = "1.0"
 bodyfile = "0.1"
 clap={version="4", features=["derive", "cargo", "wrap_help"]}
@@ -14,4 +14,4 @@ clap-verbosity-flag = {version="2.0.0"}
 log = "0.4"
 simplelog = "0.12"
 chrono = "0.4"
-winparsingtools = {path="../winparsingtools"}
+winparsingtools = {path="../winparsingtools"} # requires feature/unicode-invalid-data to be merged
