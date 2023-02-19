@@ -9,11 +9,14 @@ use lnk_parser::{
 };
 use winparsingtools::traits::Path;
 
+use crate::lnk_target_path::LnkTargetPath;
+
 pub struct LnkFile {
     lnk_file: LNKParser,
     file_name: String,
-    target_name: String,
+    target_name: LnkTargetPath,
 }
+
 
 impl LnkFile {
     pub fn print_bodyfile(&self, include_target_link_information: bool) {
@@ -24,19 +27,6 @@ impl LnkFile {
     }
 
     fn print_bodyfile_for_me(&self) {
-        log::warn!("target_full_path: {:?}", self.lnk_file.get_target_full_path());
-        log::warn!("common_network_relative_link: {:?}", self.lnk_file.get_link_info().as_ref().unwrap().get_common_network_relative_link());
-        let name = match self.lnk_file.get_target_full_path() {
-            Some(s) => s.to_owned(),
-            None => match self.lnk_file.get_relative_path() {
-                Some(s) => format!("relative path: {}", s.string.clone()),
-                None => match self.lnk_file.get_name_string() {
-                    Some(s) => format!("name sring: {}", s.string.clone()),
-                    None => "None".into(),
-                },
-            },
-        };
-
         let link_header = self.lnk_file.get_shell_link_header();
         //println!("{:?}", self.lnk_file);
         let bfline = Bodyfile3Line::new()
@@ -59,14 +49,7 @@ impl TryFrom<&str> for LnkFile {
         let mut file = File::open(value)?;
         let file_path = PathBuf::from(value);
         let lnk_file = LNKParser::from_reader(&mut file)?;
-        let target_name = match lnk_file.get_link_info() {
-            Some(li) => match li.path() {
-                Some(path) => path,
-                None => bail!("link info contains no path"),
-            },
-            None => bail!("missing link info"),
-        };
-        println!("target_name is {target_name}");
+        let target_name = LnkTargetPath::try_from(&lnk_file)?;
 
         Ok(Self {
             lnk_file,
