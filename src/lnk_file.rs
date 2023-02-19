@@ -1,13 +1,10 @@
 use std::{fs::File, path::PathBuf};
 
-use anyhow::bail;
 use bodyfile::Bodyfile3Line;
 use chrono::{DateTime, Utc};
 use lnk_parser::{
-    link_info::{self, LinkInfo, LinkInfoFlags},
     LNKParser,
 };
-use winparsingtools::traits::Path;
 
 use crate::lnk_target_path::LnkTargetPath;
 

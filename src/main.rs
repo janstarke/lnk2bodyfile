@@ -5,7 +5,6 @@ use simplelog::{TermLogger, Config, TerminalMode, ColorChoice};
 mod lnk_file;
 mod lnk_target_path;
 use lnk_file::*;
-use lnk_target_path::*;
 
 #[derive(Parser)]
 #[clap(author,version,about,long_about=None)]

@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
 use anyhow::bail;
-use lnk_parser::{LNKParser, link_info};
+use lnk_parser::{LNKParser};
 
 
 /// refer to <https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-SHLLINK/%5bMS-SHLLINK%5d.pdf>
