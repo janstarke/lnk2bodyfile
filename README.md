@@ -1,5 +1,5 @@
 # lnk2bodyfile
-Parse Windows LNK files and create bodyfile output
+Parse Windows LNK files and create [bodyfile](https://wiki.sleuthkit.org/index.php?title=Body_file) output, ready to be timelined with [mactime2](https://github.com/janstarke/mactime2) (or mactime, if you really want to)
 
 # Usage
 
