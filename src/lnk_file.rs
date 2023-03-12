@@ -16,11 +16,8 @@ pub struct LnkFile {
 
 
 impl LnkFile {
-    pub fn print_bodyfile(&self, include_target_link_information: bool) {
+    pub fn print_bodyfile(&self) {
         self.print_bodyfile_for_me();
-        if include_target_link_information {
-            self.print_bodyfile_for_link_info();
-        }
     }
 
     fn print_bodyfile_for_me(&self) {
@@ -35,8 +32,6 @@ impl LnkFile {
 
         println!("{bfline}");
     }
-
-    fn print_bodyfile_for_link_info(&self) {}
 }
 
 impl TryFrom<&str> for LnkFile {

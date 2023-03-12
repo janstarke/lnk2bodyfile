@@ -12,10 +12,6 @@ struct Cli {
     /// Name of the LNK files to read from
     pub(crate) lnk_files: Vec<String>,
 
-    /// include timestamps of target link information
-    #[clap(short('I'))]
-    pub (crate) include_target_link_information: bool,
-
     #[command(flatten)]
     pub (crate) verbose: clap_verbosity_flag::Verbosity,
 }
@@ -31,7 +27,7 @@ fn main() -> Result<()> {
 
     for filename in cli.lnk_files {
         match LnkFile::try_from(&filename[..]) {
-            Ok(lnk_file) => lnk_file.print_bodyfile(cli.include_target_link_information),
+            Ok(lnk_file) => lnk_file.print_bodyfile(),
             Err(why) => log::error!("unable to open {filename}: {why}"),
         }
     }
