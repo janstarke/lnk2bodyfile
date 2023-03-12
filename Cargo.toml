@@ -2,11 +2,15 @@
 name = "lnk2bodyfile"
 version = "0.1.0"
 edition = "2021"
+authors = ["Jan Starke <jan.starke@posteo.de>"]
+license = "GPL-3.0"
+description = "Parse Windows LNK files and create [bodyfile](https://wiki.sleuthkit.org/index.php?title=Body_file) output"
+repository = "https://github.com/janstarke/lnk2bodyfile"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-lnk_parser = { path = "../lnk_parser" } # requires feature/getters to be merged
+lnk_parser = "0.4.0"
 anyhow = "1.0"
 bodyfile = "0.1"
 clap={version="4", features=["derive", "cargo", "wrap_help"]}
@@ -14,4 +18,4 @@ clap-verbosity-flag = {version="2.0.0"}
 log = "0.4"
 simplelog = "0.12"
 chrono = "0.4"
-winparsingtools = {path="../winparsingtools"} # requires feature/unicode-invalid-data to be merged
+winparsingtools = "2.0.0"
